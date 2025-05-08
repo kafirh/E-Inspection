@@ -1,0 +1,66 @@
+﻿@model MachineInspection.Application.DTO.AddItemToMachineDto
+
+@{
+    ViewData["Title"] = "Add Item to Machine";
+}
+
+<div class="container mt-5">
+    <h3 class="mb-4">Select Item to Add to: <strong>@Model.MachineName</strong></h3>
+
+    <form asp-action="AddItemPost" asp-controller="Machine" method="post">
+        <input type="hidden" name="MachineId" value="@Model.MachineId" />
+        <input type="hidden" id="SelectedItemId" name="SelectedItemId" />
+
+        <table class="table table-hover" id="itemTable">
+            <thead class="table-light">
+                <tr>
+                    <th>Item Name</th>
+                    <th>Specification</th>
+                    <th>Method</th>
+                    <th>Frequency</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.AvailableItems)
+                {
+                    <tr data-id="@item.itemId" style="cursor:pointer;">
+                        <td>@item.itemName</td>
+                        <td>@item.specification</td>
+                        <td>@item.method</td>
+                        <td>@item.frequency</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between mt-4">
+            <a asp-controller="InspectionItem" asp-action="Create" class="btn btn-secondary">
+                + Create New Item
+            </a>
+            <button type="submit" class="btn btn-success">Add Selected</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        const rows = document.querySelectorAll('#itemTable tbody tr');
+        rows.forEach(row => {
+            row.addEventListener('click', function () {
+                rows.forEach(r => r.classList.remove('table-primary'));
+                this.classList.add('table-primary');
+
+                const itemId = this.getAttribute('data-id');
+                document.getElementById('SelectedItemId').value = itemId;
+            });
+        });
+
+        document.querySelector('form').addEventListener('submit', function (e) {
+            const selectedId = document.getElementById('SelectedItemId').value;
+            if (!selectedId) {
+                e.preventDefault();
+                alert('Please select an item from the table first.');
+            }
+        });
+    </script>
+}

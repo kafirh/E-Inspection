@@ -1,0 +1,59 @@
+﻿@model MachineInspection.Application.DTO.MachineDetailDto
+
+@{
+    ViewData["Title"] = "Detail Machine";
+}
+
+<div class="container py-5">
+    <div class="card shadow rounded-4">
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h4 class="fw-bold mb-0">Detail Machine</h4>
+                    <p class="mb-1">Machine Name: <strong>@Model.Machine.machineName</strong></p>
+                    <p class="mb-0">Machine Number: <strong>@Model.Machine.machineNumber</strong></p>
+                </div>
+
+                <div>
+                    <a asp-action="AddItem" asp-route-machineId="@Model.Machine.machineId" class="btn btn-primary fw-semibold">
+                        + Add Item
+                    </a>
+                </div>
+            </div>
+
+            <h5 class="fw-semibold mb-3">Inspection Items</h5>
+
+            @if (Model.ItemDtos != null && Model.ItemDtos.Any())
+            {
+                <table class="table table-bordered table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Specification</th>
+                            <th>Method</th>
+                            <th>Frequency</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ItemDtos)
+                        {
+                            <tr>
+                                <td>@item.itemName</td>
+                                <td>@item.specification</td>
+                                <td>@item.method</td>
+                                <td>@item.frequency</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="alert alert-warning mt-3">
+                    Tidak ada inspection item yang terkait dengan mesin ini.
+                </div>
+            }
+        </div>
+    </div>
+</div>

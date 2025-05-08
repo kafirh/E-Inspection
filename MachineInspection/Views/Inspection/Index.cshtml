@@ -1,0 +1,48 @@
+﻿@model List<MachineInspection.Application.DTO.InspectionItemDto>
+@{
+    ViewData["Title"] = "Inspection Item List";
+    int Index = 1;
+}
+
+<div class="container">
+    <h2 class="text-start mb-3">Inspection Item List</h2>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <!-- Button Create -->
+        <a asp-controller="Inspection" asp-action="Create" class="btn btn-primary">+ Create Machine</a>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark text-center">
+            <tr>
+                <th>No</th>
+                <th>ItemName</th>
+                <th>Spefication</th>
+                <th>Method</th>
+                <th>Frequency</th>
+                <th>Action </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var inspectionItemDto in Model)
+                {
+                    <tr>
+                        <td>@Index</td>
+                        <td>@inspectionItemDto.itemName</td>
+                        <td>@inspectionItemDto.specification</td>
+                        <td>@inspectionItemDto.method</td>
+                        <td>@inspectionItemDto.frequency</td>
+                        <td></td>
+                    </tr>
+                    Index++;
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="text-center text-muted">No Item available.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

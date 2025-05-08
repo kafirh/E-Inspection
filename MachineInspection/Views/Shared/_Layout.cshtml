@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MachineInspection</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MachineInspection.styles.css" asp-append-version="true" />
+    <style>
+        body {
+        display: flex;
+        height: 100vh;
+        margin: 0;
+        }
+
+        .sidebar {
+        width: 240px;
+        background-color: #f8f9fa;
+        padding: 1rem;
+        border-right: 1px solid #ddd;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        overflow-y: auto;
+        }
+
+        .content {
+        margin-left: 220px;
+        padding: 1rem;
+        overflow-y: auto;
+        width: calc(100% - 220px);
+        }
+
+        .nav-link.active {
+        font-weight: bold;
+        color: #0d6efd !important;
+        }
+    </style>
+</head>
+<body>
+    @if (ViewData["NoSidebar"] as bool? != true)
+    {
+        <div class="sidebar d-flex flex-column justify-content-between">
+            <div>
+                <h4 class="mb-4">MachineInspection</h4>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Inspection" asp-action="Index">Item Inspection</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Machine" asp-action="Index">Machine List</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <form asp-area="" asp-controller="Auth" asp-action="Logout" method="post">
+                    <button type="submit" class="nav-link btn btn-link text-danger p-0">Logout</button>
+                </form>
+            </div>
+        </div>
+    }
+
+    <div class="content">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

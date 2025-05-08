@@ -1,0 +1,68 @@
+﻿@model MachineInspection.Application.DTO.InspectionItemCreateDto
+
+@{
+    ViewData["Title"] = "New Inspection Item";
+}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+    <div class="border rounded-4 p-5 shadow" style="width: 100%; max-width: 800px;">
+        <h3 class="mb-4 fw-bold text-center">New Inspection Item</h3>
+
+        <form asp-controller="Inspection" asp-action="Create" method="post">
+            <div class="row g-3">
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Item Name:</label>
+                    <input asp-for="itemName" class="form-control" />
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Specification:</label>
+                    <input asp-for="specification" class="form-control" />
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Method:</label>
+                    <input asp-for="method" class="form-control" />
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Frequency:</label>
+                    <input asp-for="frequency" class="form-control" />
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Number:</label>
+                    <input asp-for="number" type="number" class="form-control" />
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Image Name:</label>
+                    <input asp-for="imageName" class="form-control" />
+                </div>
+
+                <div class="col-md-6 d-flex align-items-center">
+                    <label class="form-label fw-semibold me-2">Is Number:</label>
+                    <div class="form-check form-switch">
+                        <input asp-for="isNumber" class="form-check-input" type="checkbox" />
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Prasyarat:</label>
+                    <input asp-for="prasyarat" class="form-control" />
+                </div>
+
+                <div class="col-12 text-center mt-4">
+                    <button type="submit" class="btn btn-success px-5 py-2 rounded-pill fw-bold">
+                        SIMPAN
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
