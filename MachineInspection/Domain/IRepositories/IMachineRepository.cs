@@ -7,5 +7,6 @@ namespace MachineInspection.Domain.IRepositories
         Task<List<Machine>> GetAll(string? buId = null);
         Task Create(Machine machine);
         Task<Machine> GetMachineById(string machineId);
+        Task<bool> GetExist(string machineId);
     }
 }

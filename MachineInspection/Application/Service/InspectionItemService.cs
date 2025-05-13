@@ -25,7 +25,7 @@ namespace MachineInspection.Application.Service
             }).ToList();
             return itemDtos;
         }
-        public async Task<bool> CreateInspectionItemDto(InspectionItemCreateDto itemCreateDto)
+        public async Task CreateInspectionItemDto(InspectionItemCreateDto itemCreateDto)
         {
             try
             {
@@ -36,16 +36,37 @@ namespace MachineInspection.Application.Service
                     frequency = itemCreateDto.frequency,
                     method = itemCreateDto.method,
                     number = itemCreateDto.number,
-                    imageName = itemCreateDto.imageName,
                     isNumber = itemCreateDto.isNumber,
                     prasyarat = itemCreateDto.prasyarat,
                 };
                 await _inspectionItemRepository.Create(item);
-                return true;
             }
             catch (Exception ex) 
             {
-                return false;
+                Console.WriteLine(ex.ToString());
+            }
+        }
+        public async Task<int> CreateWithIdInspectionItemDto(InspectionItemCreateDto itemCreateDto)
+        {
+            try
+            {
+                var item = new InspectionItem
+                {
+                    itemName = itemCreateDto.itemName,
+                    specification = itemCreateDto.specification,
+                    frequency = itemCreateDto.frequency,
+                    method = itemCreateDto.method,
+                    number = itemCreateDto.number,
+                    isNumber = itemCreateDto.isNumber,
+                    prasyarat = itemCreateDto.prasyarat,
+                };
+                return await _inspectionItemRepository.CreateWithId(item);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return 0;
             }
         }
     }

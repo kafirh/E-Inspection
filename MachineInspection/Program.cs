@@ -22,18 +22,27 @@ builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IBusinessUnitRepository, BusinessUnitRepository>();
 builder.Services.AddScoped<IInspectionItemRepository, InspectionItemRepository>();
 builder.Services.AddScoped<IMachineInspectionRepository, MachineInspectionRepository>();
+builder.Services.AddScoped<IResultRepository, ResultRepository>();
+builder.Services.AddScoped<IDetailResultRepository, DetailResultRepository>();
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICookieAuthHelper, CookieAuthHelper>();
 builder.Services.AddScoped<ICurrentUserHelper, CurrentUserHelper>();
+builder.Services.AddScoped<IImageHelper, ImageHelper>();     
 
 builder.Services.AddScoped<MachineService>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<BusinessUnitService>();
 builder.Services.AddScoped<InspectionItemService>();
 builder.Services.AddScoped<MachineInspectionService>();
+builder.Services.AddScoped<ResultService>();
+builder.Services.AddScoped<DetailResultService>();
 
 builder.Services.AddScoped<MachineFacade>();
+builder.Services.AddScoped<InspectionItemFacade>();
+builder.Services.AddScoped<ResultFacade>();
+builder.Services.AddScoped<DetailResultFacade>();
+builder.Services.AddScoped<CheckSheetFacade>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

@@ -6,7 +6,7 @@ namespace MachineInspection.Application.DTO
     {
         public List<SelectListItem>? BuList { get; set; } // untuk dropdown BU
         public bool IsAdmin { get; set; }
-        public string BuId { get; set; }
+        public string? BuId { get; set; }
         public MachineCreateDto MachineCreateDto { get; set; } = new();
     }
 }

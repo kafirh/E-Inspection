@@ -4,7 +4,7 @@ namespace MachineInspection.Application.IHelper
 {
     public interface ICookieAuthHelper
     {
-        Task SignInAsync(BusinessUnit bu, string userName, Role role);
+        Task SignInAsync(BusinessUnit bu, string userName, Role role,int Id);
         Task SignOutAsync();
     }
 }

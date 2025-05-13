@@ -1,6 +1,6 @@
-wwwroot\assets\Images\workers.png
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\images\4RF-PE-MDS-017-18.jpg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

@@ -32,6 +32,12 @@
         width: calc(100% - 220px);
         }
 
+        .full-width {
+            margin-left: 0 !important;
+            width: 100% !important;
+        }
+
+
         .nav-link.active {
         font-weight: bold;
         color: #0d6efd !important;
@@ -54,6 +60,12 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Machine" asp-action="Index">Machine List</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Result" asp-action="Index">Result List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="CheckSheet" asp-action="Index">Check Sheet</a>
+                    </li>
                 </ul>
             </div>
 
@@ -65,11 +77,12 @@
         </div>
     }
 
-    <div class="content">
+    <div class="content @(ViewData["NoSidebar"] as bool? == true ? "full-width" : "")">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

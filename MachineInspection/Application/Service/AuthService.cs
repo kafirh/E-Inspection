@@ -36,7 +36,7 @@ namespace MachineInspection.Application.Service
             if (bu == null) return false;
 
             // 4. Simpan session dengan claims menggunakan CookieAuthService
-            await _cookieAuthHelper.SignInAsync(bu, user.username, role);
+            await _cookieAuthHelper.SignInAsync(bu, user.username, role,user.id);
 
             return true; // Login berhasil
         }

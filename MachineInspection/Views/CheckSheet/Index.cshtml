@@ -1,0 +1,27 @@
+﻿@model MachineInspection.Application.DTO.ChecksheetFilterViewDto
+@{
+    ViewData["Title"] = "Select Checksheet";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center">Select Machine & Period</h2>
+    <form asp-controller="CheckSheet" asp-action="SelectChecksheet" method="post" class="mt-4">
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <label class="form-label">Machine</label>
+                <select asp-for="SelectedMachineId" asp-items="Model.MachineOptions" class="form-select"></select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Month</label>
+                <select asp-for="SelectedMonth" asp-items="Model.MonthOptions" class="form-select"></select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Year</label>
+                <select asp-for="SelectedYear" asp-items="Model.YearOptions" class="form-select"></select>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">View Checksheet</button>
+        </div>
+    </form>
+</div>

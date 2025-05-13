@@ -3,7 +3,7 @@
     public class Result
     {
         public int id { get; set; }
-        public string userId {  get; set; }
+        public int userId {  get; set; }
         public string status { get; set; }
         public DateTime date { get; set; }
         public string machineId { get; set; }

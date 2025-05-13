@@ -1,0 +1,71 @@
+﻿@model MachineInspection.Application.DTO.CheckSheetViewDto
+@{
+    var daysInMonth = DateTime.DaysInMonth(Model.Year, Model.Month);
+    ViewData["NoSidebar"] = true;
+}
+
+<h2 class="text-center">DAILY MAINTENANCE CHECK DATA SHEET</h2>
+<table class="table table-bordered text-center">
+    <thead>
+        <tr>
+            <td colspan="6" class="text-start">
+                <strong>SECTION NAME:</strong> @Model.Machine.sectionName<br />
+                <strong>MACHINE NAME:</strong> @Model.Machine.machineName<br />
+                <strong>LINE:</strong> @Model.Machine.line<br />
+                <strong>MACHINE NUMBER:</strong> @Model.Machine.machineNumber<br />
+                <strong>DOCUMENT NO:</strong> @Model.Machine.documentNo
+            </td>
+            <td colspan="@daysInMonth">MONTH: @Model.Month / YEAR: @Model.Year</td>
+        </tr>
+        <tr>
+            <th>No.</th>
+            <th>Inspection Items</th>
+            <th>Specification</th>
+            <th>Method</th>
+            <th>Frequency</th>
+            @for (int d = 1; d <= daysInMonth; d++)
+            {
+                <th>@d</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Items.Count; i++)
+        {
+            var item = Model.Items[i];
+            <tr>
+                <td>@(i + 1)</td>
+                <td>@item.itemName</td>
+                <td>@item.specification</td>
+                <td>@item.method</td>
+                <td>@item.frequency</td>
+                @for (int d = 1; d <= daysInMonth; d++)
+                {
+                    string status = Model.StatusMap.TryGetValue((item.itemId, d), out var s) ? s : "";
+                    Console.WriteLine(status);
+
+                    string symbol = "";
+                    string color = "";
+
+                    if (status == "OK")
+                    {
+                        symbol = "O";
+                        color = "green";
+                    }
+                    else if (status == "NG")
+                    {
+                        symbol = "X";
+                        color = "red";
+                    }
+                    else
+                    {
+                        symbol = "-";
+                        color = "grey"; // You can change the color for dash status if needed
+                    }
+
+                    <td style="text-align:center; color:@color">@symbol</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

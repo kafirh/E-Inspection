@@ -78,9 +78,27 @@ namespace MachineInspection.Application.Facade
                 MachineCreateDto = new MachineCreateDto() // Siapkan DTO kosong untuk form
             };
         }
-        public async Task<bool> CreateMachineAsync(MachineCreateDto machineCreateDto)
+        public async Task<OperationResult> CreateMachineAsync(MachineCreateDto machineCreateDto)
         {
-            return await _machineService.CreateMachineAsync(machineCreateDto);
+            bool exist = await _machineService.GetExist(machineCreateDto.MachineId);
+            if (exist)
+            {
+                return OperationResult.Fail("Machine ID sudah digunakan.");
+            }
+
+            bool created = await _machineService.CreateMachineAsync(machineCreateDto);
+            return created
+                ? OperationResult.Ok("Machine berhasil dibuat.")
+                : OperationResult.Fail("Gagal menyimpan data mesin.");
+        }
+
+        //public async Task<bool> AddItemAsync(string machineId,int InspectionId,string imageName)
+        //{
+        //    return await _machineInspectionService.CreateMachineInspectionAsync(machineId, InspectionId);
+        //}
+        public async Task<MachineDto> GetMachineDtoAsync(string machineId)
+        {
+            return await _machineService.GetMachineByIdAsync(machineId);
         }
     }
 }

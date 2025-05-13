@@ -19,7 +19,7 @@ namespace MachineInspection.Infrastructure.Repositories
             using (var connection = _dbContext.GetConnection())
             {
                 await connection.OpenAsync();
-                var command = new SqlCommand("SELECT username, password, buId, roleId FROM Users WHERE username = @username", connection);
+                var command = new SqlCommand("SELECT Id,username, password, buId, roleId FROM Users WHERE username = @username", connection);
                 command.Parameters.AddWithValue("@username", username);
 
                 using (var reader = await command.ExecuteReaderAsync())
@@ -28,6 +28,7 @@ namespace MachineInspection.Infrastructure.Repositories
                     {
                         return new User
                         {
+                            id = Convert.ToInt32(reader["id"]),
                             username = reader["username"].ToString(),
                             password = reader["password"].ToString(),
                             buId = reader["buId"].ToString(),

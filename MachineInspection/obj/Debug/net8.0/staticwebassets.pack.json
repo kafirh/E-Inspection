@@ -5,16 +5,16 @@
       "PackagePath": "staticwebassets\\MachineInspection.339m84s3ng.bundle.scp.css"
     },
     {
-      "Id": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\assets\\Images\\workers.png",
-      "PackagePath": "staticwebassets\\assets\\Images\\workers.png"
-    },
-    {
       "Id": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\images\\4RF-PE-MDS-017-18.jpg",
+      "PackagePath": "staticwebassets\\images\\4RF-PE-MDS-017-18.jpg"
     },
     {
       "Id": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\js\\site.js",

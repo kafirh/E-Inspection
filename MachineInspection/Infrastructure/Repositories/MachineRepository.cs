@@ -87,7 +87,7 @@ namespace MachineInspection.Infrastructure.Repositories
             using (var connection = _dbContext.GetConnection())
             {
                 await connection.OpenAsync();
-                var command = new SqlCommand("SELECT machineId, machineName,machineNumber FROM Machines WHERE machineId = @machineId", connection);
+                var command = new SqlCommand("SELECT machineId, sectionName, machineName, line, machineNumber, documentNo, buId FROM Machines WHERE machineId = @machineId", connection);
                 command.Parameters.AddWithValue("@machineId", machineId);
 
                 using (var reader = await command.ExecuteReaderAsync())
@@ -97,8 +97,12 @@ namespace MachineInspection.Infrastructure.Repositories
                         return new Machine
                         {
                             machineId = reader["machineId"].ToString(),
+                            sectionName = reader["sectionName"].ToString(),
                             machineName = reader["machineName"].ToString(),
+                            line = reader["line"].ToString(),
                             machineNumber = reader["machineNumber"].ToString(),
+                            documentNo = reader["documentNo"].ToString(),
+                            buId = reader["buId"].ToString(),
                         };
                     }
                 }
@@ -106,5 +110,21 @@ namespace MachineInspection.Infrastructure.Repositories
 
             return machine; // user tidak ditemukan
         }
+
+        public async Task<bool> GetExist(string machineId)
+        {
+            using (var connection = _dbContext.GetConnection())
+            {
+                await connection.OpenAsync();
+                var command = new SqlCommand("SELECT 1 FROM Machines WHERE machineId = @machineId", connection);
+                command.Parameters.AddWithValue("@machineId", machineId);
+
+                using (var reader = await command.ExecuteReaderAsync())
+                {
+                    return await reader.ReadAsync();
+                }
+            }
+        }
+
     }
 }

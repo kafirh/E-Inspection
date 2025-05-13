@@ -14,11 +14,12 @@ namespace MachineInspection.Infrastructure.Helper
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task SignInAsync(BusinessUnit bu, string userName, Role role)
+        public async Task SignInAsync(BusinessUnit bu, string userName, Role role,int Id)
         {
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, userName),
+                new Claim("userId",Id.ToString()),
                 new Claim("roleId", role.roleId.ToString()),              
                 new Claim("roleName", role.roleName),
                 new Claim("buId", bu.buId ?? string.Empty), 

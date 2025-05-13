@@ -80,3 +80,4 @@ D:\visual_basic_belajar\MachineInspection\MachineInspection\obj\Debug\net8.0\Mac
 D:\visual_basic_belajar\MachineInspection\MachineInspection\obj\Debug\net8.0\MachineInspection.genruntimeconfig.cache
 D:\visual_basic_belajar\MachineInspection\MachineInspection\obj\Debug\net8.0\ref\MachineInspection.dll
 D:\visual_basic_belajar\MachineInspection\MachineInspection\bin\Debug\net8.0\BCrypt.Net-Next.dll
+D:\visual_basic_belajar\MachineInspection\MachineInspection\obj\Debug\net8.0\MachineInspection.sourcelink.json

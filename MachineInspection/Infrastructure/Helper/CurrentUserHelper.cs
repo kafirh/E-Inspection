@@ -19,6 +19,7 @@ namespace MachineInspection.Infrastructure.Helper
         public string? roleName => GetClaim("roleName");
         public string? buId => GetClaim("buId");
         public string? buName => GetClaim("buName");
+        public string? userId => GetClaim("userId");
 
         private string? GetClaim(string claimType)
         {

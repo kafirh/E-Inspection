@@ -59,6 +59,7 @@ namespace MachineInspection.Application.Service
             }
             catch (Exception ex) 
             {
+                Console.WriteLine(ex.ToString());
                 return false;
             }
         }
@@ -70,8 +71,16 @@ namespace MachineInspection.Application.Service
                 machineId = machine.machineId,
                 machineName = machine.machineName,
                 machineNumber = machine.machineNumber,
+                documentNo = machine.documentNo,
+                sectionName = machine.sectionName,
+                line= machine.line,
+                buId= machine.buId
             };
             return machineDto;
+        }
+        public async Task<bool> GetExist(string machineId)
+        {
+            return await _machineRepository.GetExist(machineId);
         }
     }
 }

@@ -7,7 +7,15 @@
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
     <div class="border rounded-4 p-5 shadow" style="width: 100%; max-width: 700px;">
         <h3 class="mb-4 fw-bold text-center">New Machine</h3>
-
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger text-center">
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <div>@error.ErrorMessage</div>
+                }
+            </div>
+        }
         <form asp-controller="Machine" asp-action="Create" method="post">
             <div class="row g-3">
                 <div class="col-md-6">
@@ -66,4 +74,11 @@
 
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+        document.querySelectorAll('.form-control').forEach(function(input) {
+            input.addEventListener('input', function() {
+                this.value = this.value.toUpperCase();
+            });
+        });
+    </script>
 }

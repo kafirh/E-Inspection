@@ -1,0 +1,62 @@
+﻿@model List<MachineInspection.Application.DTO.DetailResultWithItemDto>
+
+@{
+    ViewData["Title"] = "Detail Hasil Inspeksi";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold">Detail Hasil Inspeksi</h2>
+        <p class="text-muted">Berikut adalah hasil pemeriksaan lengkap</p>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered align-middle shadow-sm">
+            <thead class="table-dark text-center">
+                <tr>
+                    <th>No</th>
+                    <th>Item Name</th>
+                    <th>Specification</th>
+                    <th>Method</th>
+                    <th>Frequency</th>
+                    <th>Status</th>
+                    <th>Remark</th>
+                    <th>Tanggal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Count > 0)
+                {
+                    int no = 1;
+                    foreach (var item in Model)
+                    {
+                        var rowClass = item.Status switch
+                        {
+                            "OK" => "table-success",
+                            "NG" => "table-danger",
+                            "-" => "table-warning",
+                            _ => ""
+                        };
+                        <tr class="@rowClass">
+                            <td class="text-center">@no</td>
+                            <td>@item.ItemName</td>
+                            <td>@item.Specification</td>
+                            <td>@item.Method</td>
+                            <td>@item.Frequency</td>
+                            <td class="text-center fw-semibold">@item.Status</td>
+                            <td>@item.Remark</td>
+                            <td>@item.Tanggal.ToString("dd MMM yyyy HH:mm")</td>
+                        </tr>
+                        no++;
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="8" class="text-center text-muted">Tidak ada data inspeksi.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

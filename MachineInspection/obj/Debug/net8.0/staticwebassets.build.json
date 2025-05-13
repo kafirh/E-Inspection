@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2CWxC6xWi4bYVZQRd8NV3UWzDG6d3H9CIYcBJgGeDpc=",
+  "Hash": "3jtMyiQAsK87Vehiwdmsy6aol4gT6URJS89vSr+71/U=",
   "Source": "MachineInspection",
   "BasePath": "_content/MachineInspection",
   "Mode": "Default",
@@ -59,27 +59,6 @@
       "OriginalItemSpec": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MachineInspection.bundle.scp.css"
     },
     {
-      "Identity": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\assets\\Images\\workers.png",
-      "SourceId": "MachineInspection",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\",
-      "BasePath": "_content/MachineInspection",
-      "RelativePath": "assets/Images/workers#[.{fingerprint}]?.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "0kk1k2t907",
-      "Integrity": "UApInXmvSy8NMTCm1aR9XIwDGKH5Osx2GisEnm2d/WE=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\Images\\workers.png"
-    },
-    {
       "Identity": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\css\\site.css",
       "SourceId": "MachineInspection",
       "SourceType": "Discovered",
@@ -120,6 +99,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\images\\4RF-PE-MDS-017-18.jpg",
+      "SourceId": "MachineInspection",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\",
+      "BasePath": "_content/MachineInspection",
+      "RelativePath": "images/4RF-PE-MDS-017-18#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kjsksd4h7y",
+      "Integrity": "gD1k5rvTJOEeTiYn1vbZPd8FF1HtFR6WHSs96b5WTBk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\4RF-PE-MDS-017-18.jpg"
     },
     {
       "Identity": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\js\\site.js",
@@ -1342,88 +1342,6 @@
   ],
   "Endpoints": [
     {
-      "Route": "assets/Images/workers.0kk1k2t907.png",
-      "AssetFile": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\assets\\Images\\workers.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "549351"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"UApInXmvSy8NMTCm1aR9XIwDGKH5Osx2GisEnm2d/WE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 03:47:31 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "0kk1k2t907"
-        },
-        {
-          "Name": "label",
-          "Value": "assets/Images/workers.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-UApInXmvSy8NMTCm1aR9XIwDGKH5Osx2GisEnm2d/WE="
-        }
-      ]
-    },
-    {
-      "Route": "assets/Images/workers.png",
-      "AssetFile": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\assets\\Images\\workers.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "549351"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"UApInXmvSy8NMTCm1aR9XIwDGKH5Osx2GisEnm2d/WE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 03:47:31 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-UApInXmvSy8NMTCm1aR9XIwDGKH5Osx2GisEnm2d/WE="
-        }
-      ]
-    },
-    {
       "Route": "css/site.c2tiyv64ts.css",
       "AssetFile": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -1584,6 +1502,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
+        }
+      ]
+    },
+    {
+      "Route": "images/4RF-PE-MDS-017-18.jpg",
+      "AssetFile": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\images\\4RF-PE-MDS-017-18.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "41985"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gD1k5rvTJOEeTiYn1vbZPd8FF1HtFR6WHSs96b5WTBk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 12 May 2025 15:53:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-gD1k5rvTJOEeTiYn1vbZPd8FF1HtFR6WHSs96b5WTBk="
+        }
+      ]
+    },
+    {
+      "Route": "images/4RF-PE-MDS-017-18.kjsksd4h7y.jpg",
+      "AssetFile": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\images\\4RF-PE-MDS-017-18.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "41985"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gD1k5rvTJOEeTiYn1vbZPd8FF1HtFR6WHSs96b5WTBk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 12 May 2025 15:53:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kjsksd4h7y"
+        },
+        {
+          "Name": "label",
+          "Value": "images/4RF-PE-MDS-017-18.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-gD1k5rvTJOEeTiYn1vbZPd8FF1HtFR6WHSs96b5WTBk="
         }
       ]
     },

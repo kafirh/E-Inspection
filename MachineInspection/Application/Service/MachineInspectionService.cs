@@ -1,4 +1,5 @@
 ﻿using MachineInspection.Application.DTO;
+using MachineInspection.Domain.Entities;
 using MachineInspection.Domain.IRepositories;
 
 namespace MachineInspection.Application.Service
@@ -23,6 +24,35 @@ namespace MachineInspection.Application.Service
                 method = i.method,
             }).ToList();
             return itemDtos;
+        }
+        public async Task<List<int>> GetIdItemByMachineAsync(string machineId)
+        {
+            return await _machineInspectionRepository.GetIdByMachineId(machineId);
+        }
+
+        public async Task<bool> CreateMachineInspectionAsync(string machineId, int inspectionId,string imageName)
+        {
+            if (inspectionId == 0) 
+            {
+                Console.WriteLine("inspection Id 0");
+                return false;
+            }
+            var machineInspection = new MachineInspectionItem
+            {
+                machineId = machineId,
+                inspectionId = inspectionId,
+                imageName = imageName
+            };
+            try
+            {
+                await _machineInspectionRepository.CreateMachineInspection(machineInspection);
+                return true;
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
         }
     }
 }
