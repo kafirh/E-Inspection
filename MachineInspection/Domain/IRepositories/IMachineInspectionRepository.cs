@@ -1,10 +1,11 @@
-﻿using MachineInspection.Domain.Entities;
+﻿using MachineInspection.Application.DTO;
+using MachineInspection.Domain.Entities;
 
 namespace MachineInspection.Domain.IRepositories
 {
     public interface IMachineInspectionRepository
     {
-        Task<List<InspectionItem>> GetByMachineId(string machineId);
+        Task<List<InspectionItemWithImageDto>> GetByMachineId(string machineId);
         Task<List<int>> GetIdByMachineId(string machineId);
         Task CreateMachineInspection(MachineInspectionItem machineInspectionItem);
     }

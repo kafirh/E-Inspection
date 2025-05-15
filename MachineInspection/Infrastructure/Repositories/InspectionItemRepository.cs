@@ -23,9 +23,9 @@ namespace MachineInspection.Infrastructure.Repositories
                 await connection.OpenAsync();
 
                 var query = @"INSERT INTO InspectionItems 
-                     (itemName, specification, method, frequency, number,  isNumber,prasyarat) 
+                     (itemName, specification, method, frequency,  isNumber,prasyarat) 
                      VALUES 
-                     (@itemName, @specification, @method, @frequency, @number, @isNumber,@prasyarat)";
+                     (@itemName, @specification, @method, @frequency, @isNumber,@prasyarat)";
 
                 using (var command = new SqlCommand(query, connection))
                 {
@@ -33,7 +33,6 @@ namespace MachineInspection.Infrastructure.Repositories
                     command.Parameters.AddWithValue("@specification", item.specification);
                     command.Parameters.AddWithValue("@method", item.method);
                     command.Parameters.AddWithValue("@frequency", item.frequency);
-                    command.Parameters.AddWithValue("@number", item.number);
                     command.Parameters.AddWithValue("@isNumber", item.isNumber);
                     command.Parameters.AddWithValue("@prasyarat", item.prasyarat);
 
@@ -48,7 +47,7 @@ namespace MachineInspection.Infrastructure.Repositories
             using (var connection = _dbContext.GetConnection())
             {
                 await connection.OpenAsync();
-                var command = new SqlCommand("SELECT itemId, itemName, specification, method, frequency, number, isNumber, prasyarat FROM InspectionItems", connection);
+                var command = new SqlCommand("SELECT itemId, itemName, specification, method, frequency, isNumber, prasyarat FROM InspectionItems", connection);
 
                 using (var reader = await command.ExecuteReaderAsync())
                 {
@@ -61,7 +60,6 @@ namespace MachineInspection.Infrastructure.Repositories
                             specification = reader["specification"].ToString(),
                             method = reader["method"].ToString(),
                             frequency = reader["frequency"].ToString(),
-                            number = Convert.ToInt32(reader["number"]),
                             isNumber = Convert.ToBoolean(reader["isNumber"]),
                             prasyarat = reader["prasyarat"].ToString()
                         });
@@ -84,10 +82,10 @@ namespace MachineInspection.Infrastructure.Repositories
 
                 var query = @"
             INSERT INTO InspectionItems 
-                (itemName, specification, method, frequency, number, isNumber, prasyarat) 
+                (itemName, specification, method, frequency, isNumber, prasyarat) 
             OUTPUT INSERTED.itemId
             VALUES 
-                (@itemName, @specification, @method, @frequency, @number, @isNumber, @prasyarat);";
+                (@itemName, @specification, @method, @frequency, @isNumber, @prasyarat);";
 
                 using (var command = new SqlCommand(query, connection))
                 {
@@ -95,7 +93,6 @@ namespace MachineInspection.Infrastructure.Repositories
                     command.Parameters.AddWithValue("@specification", item.specification);
                     command.Parameters.AddWithValue("@method", item.method);
                     command.Parameters.AddWithValue("@frequency", item.frequency);
-                    command.Parameters.AddWithValue("@number", item.number);
                     command.Parameters.AddWithValue("@isNumber", item.isNumber);
                     command.Parameters.AddWithValue("@prasyarat", item.prasyarat);
 

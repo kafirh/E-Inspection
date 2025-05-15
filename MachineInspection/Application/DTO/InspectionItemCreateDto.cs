@@ -6,8 +6,5 @@
         public string specification { get; set; }
         public string method { get; set; }
         public string frequency { get; set; }
-        public int number { get; set; }
-        public bool isNumber { get; set; }
-        public string prasyarat { get; set; }
     }
 }

@@ -34,23 +34,6 @@
                         <label class="form-label fw-semibold">Frequency:</label>
                         <input asp-for="Item.frequency" class="form-control" />
                     </div>
-
-                    <div class="col-md-6">
-                        <label class="form-label fw-semibold">Number:</label>
-                        <input asp-for="Item.number" type="number" class="form-control" />
-                    </div>
-
-                    <div class="col-md-6 d-flex align-items-center">
-                        <label class="form-label fw-semibold me-2">Is Number:</label>
-                        <div class="form-check form-switch">
-                            <input asp-for="Item.isNumber" class="form-check-input" type="checkbox" />
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label class="form-label fw-semibold">Prasyarat:</label>
-                        <input asp-for="Item.prasyarat" class="form-control" />
-                    </div>
                 }
 
                 @if (Model.Mode != "NoImage")
@@ -125,7 +108,13 @@
             };
         });
     </script>
-
+    <script>
+        document.querySelectorAll('.form-control').forEach(function(input) {
+            input.addEventListener('input', function() {
+                this.value = this.value.toUpperCase();
+            });
+        });
+    </script>
     @await Html.PartialAsync("_ValidationScriptsPartial")
 }
 

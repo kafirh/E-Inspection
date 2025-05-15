@@ -15,7 +15,7 @@ namespace MachineInspection.Application.Service
         }
         public async Task<List<ResultDto>> GetResultDtosAsync(string buId)
         {
-            List<Result> results;
+            List<ResultDto> results;
             if (buId == "ALL")
             {
                 results = await _resultRepository.GetAllAsync();  // Ambil semua data
@@ -24,29 +24,11 @@ namespace MachineInspection.Application.Service
             {
                 results = await _resultRepository.GetAllAsync(buId);  // Ambil data berdasarkan BU
             }
-            var resultDtos = results.Select(r => new ResultDto
-            {
-                resultId = r.id,
-                userId = r.userId,
-                status = r.status,
-                date = r.date,
-                machineId = r.machineId,
-                buId = buId,
-            }).ToList();
-
-            return resultDtos;
+            return results;
         }
 
-        public async Task<int> CreateAsync(ResultDto resultDto)
+        public async Task<int> CreateAsync(Result result)
         {
-            var result = new Result
-            {
-                userId = resultDto.userId,
-                status = resultDto.status,
-                date = resultDto.date,
-                machineId = resultDto.machineId,
-                buId = resultDto.buId,
-            };
             return await _resultRepository.Create(result);
         }
     }

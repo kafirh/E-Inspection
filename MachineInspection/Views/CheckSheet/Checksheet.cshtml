@@ -2,21 +2,56 @@
 @{
     var daysInMonth = DateTime.DaysInMonth(Model.Year, Model.Month);
     ViewData["NoSidebar"] = true;
+    var itemsWithImages = Model.Items.Where(i => !string.IsNullOrEmpty(i.imageName)).ToList();
+    int colPerRow = 4;
 }
 
-<h2 class="text-center">DAILY MAINTENANCE CHECK DATA SHEET</h2>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
+    <h2 class="flex-grow-1 text-center m-0">DAILY MAINTENANCE CHECK DATA SHEET</h2>
+    <div style="width: 75px;"></div> <!-- Placeholder to balance the Back button -->
+</div>
+
+<!-- Tabel Informasi Mesin 6 kolom × 2 baris -->
+<table class="table table-bordered text-center">
+    <tr>
+        <td><strong>SECTION NAME</strong></td>
+        <td>@Model.Machine.sectionName</td>
+        <td><strong>MACHINE NAME</strong></td>
+        <td>@Model.Machine.machineName</td>
+        <td><strong>DOCUMENT NO</strong></td>
+        <td>@Model.Machine.documentNo</td>
+    </tr>
+    <tr>
+        <td><strong>LINE</strong></td>
+        <td>@Model.Machine.line</td>
+        <td><strong>MACHINE NUMBER</strong></td>
+        <td>@Model.Machine.machineNumber</td>
+        <td><strong>MONTH / YEAR</strong></td>
+        <td>@Model.Month / @Model.Year</td>
+    </tr>
+</table>
+<!-- Tabel Gambar Mesin -->
+@if (itemsWithImages.Count > 0)
+{
+    <table class="table table-bordered text-center">
+        @for (int i = 0; i < itemsWithImages.Count; i += colPerRow)
+        {
+            <tr>
+                @for (int j = i; j < i + colPerRow && j < itemsWithImages.Count; j++)
+                {
+                    <td>
+                        <img src="~/images/@itemsWithImages[j].imageName" alt="Inspection Image" style="max-height: 150px;" class="img-fluid mx-auto d-block" />
+                        <div>@itemsWithImages[j].imageName</div>
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+}   
+
 <table class="table table-bordered text-center">
     <thead>
-        <tr>
-            <td colspan="6" class="text-start">
-                <strong>SECTION NAME:</strong> @Model.Machine.sectionName<br />
-                <strong>MACHINE NAME:</strong> @Model.Machine.machineName<br />
-                <strong>LINE:</strong> @Model.Machine.line<br />
-                <strong>MACHINE NUMBER:</strong> @Model.Machine.machineNumber<br />
-                <strong>DOCUMENT NO:</strong> @Model.Machine.documentNo
-            </td>
-            <td colspan="@daysInMonth">MONTH: @Model.Month / YEAR: @Model.Year</td>
-        </tr>
         <tr>
             <th>No.</th>
             <th>Inspection Items</th>

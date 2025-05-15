@@ -1,4 +1,5 @@
 ﻿using System.Reflection.PortableExecutable;
+using MachineInspection.Application.DTO;
 using MachineInspection.Domain.Entities;
 using MachineInspection.Domain.IRepositories;
 using MachineInspection.Infrastructure.Data;
@@ -38,17 +39,17 @@ namespace MachineInspection.Infrastructure.Repositories
             }
         }
 
-        public async Task<List<InspectionItem>> GetByMachineId(string machineId)
+        public async Task<List<InspectionItemWithImageDto>> GetByMachineId(string machineId)
         {
-            var items = new List<InspectionItem>();
+            var items = new List<InspectionItemWithImageDto>();
 
             using (var connection = _dbContext.GetConnection())
             {
                 await connection.OpenAsync();
 
                 var query = @"
-            SELECT ii.itemId, ii.itemName, ii.specification, ii.method, ii.frequency,
-                   ii.number, ii.isNumber, ii.prasyarat
+            SELECT mi.imageName, ii.itemId, ii.itemName, ii.specification, ii.method, ii.frequency,
+                   ii.isNumber, ii.prasyarat
             FROM Machine_Inspection mi
             JOIN InspectionItems ii ON mi.inspectionId = ii.itemId
             WHERE mi.machineId = @machineId";
@@ -61,16 +62,16 @@ namespace MachineInspection.Infrastructure.Repositories
                     {
                         while (await reader.ReadAsync())
                         {
-                            items.Add(new InspectionItem
+                            items.Add(new InspectionItemWithImageDto
                             {
                                 itemId = Convert.ToInt32(reader["itemId"]),
                                 itemName = reader["itemName"].ToString(),
                                 specification = reader["specification"].ToString(),
                                 method = reader["method"].ToString(),
                                 frequency = reader["frequency"].ToString(),
-                                number = Convert.ToInt32(reader["number"]),
                                 isNumber = Convert.ToBoolean(reader["isNumber"]),
-                                prasyarat = reader["prasyarat"].ToString()
+                                prasyarat = reader["prasyarat"].ToString(),
+                                imageName = reader["imageName"].ToString(),
                             });
                         }
                     }

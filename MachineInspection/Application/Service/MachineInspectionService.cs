@@ -22,6 +22,7 @@ namespace MachineInspection.Application.Service
                 specification = i.specification,
                 frequency = i.frequency,
                 method = i.method,
+                imageName = i.imageName,
             }).ToList();
             return itemDtos;
         }

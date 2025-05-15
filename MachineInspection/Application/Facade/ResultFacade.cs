@@ -1,6 +1,7 @@
 ﻿using MachineInspection.Application.DTO;
 using MachineInspection.Application.IHelper;
 using MachineInspection.Application.Service;
+using MachineInspection.Domain.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MachineInspection.Application.Facade
@@ -32,7 +33,7 @@ namespace MachineInspection.Application.Facade
                 var buId = _currentUserHelper.buId;
                 DateTime date = DateTime.Now;
                 var status = "-";
-                var resultDto = new ResultDto
+                var result = new Result
                 {
                     userId = Convert.ToInt32(userId),
                     buId = buId,
@@ -40,7 +41,7 @@ namespace MachineInspection.Application.Facade
                     status = status,
                     machineId = machineId
                 };
-                int resultId = await _resultService.CreateAsync(resultDto);
+                int resultId = await _resultService.CreateAsync(result);
                 await _detailResultFacade.Create(machineId, resultId);
                 return true;
             }

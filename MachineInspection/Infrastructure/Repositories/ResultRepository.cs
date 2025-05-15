@@ -1,4 +1,5 @@
 ﻿using System.Reflection.PortableExecutable;
+using MachineInspection.Application.DTO;
 using MachineInspection.Domain.Entities;
 using MachineInspection.Domain.IRepositories;
 using MachineInspection.Infrastructure.Data;
@@ -43,17 +44,20 @@ namespace MachineInspection.Infrastructure.Repositories
         }
 
 
-        public async Task<List<Result>> GetAllAsync(string? buId = null)
+        public async Task<List<ResultDto>> GetAllAsync(string? buId = null)
         {
-            var results = new List<Result>();
+            var results = new List<ResultDto>();
             using (var connection = _dbContext.GetConnection())
             {
                 await connection.OpenAsync();
 
-                var query = "SELECT id, userId, status, date, machineId, buId FROM Result";
+                var query = @"
+            SELECT r.id, u.username, r.status, r.date, r.machineId, r.buId
+            FROM Result r
+            JOIN Users u ON r.userId = u.id";
                 if (!string.IsNullOrEmpty(buId))
                 {
-                    query += " WHERE buId = @BuId";
+                    query += " WHERE r.buId = @BuId";
                 }
 
                 var command = new SqlCommand(query, connection);
@@ -66,10 +70,10 @@ namespace MachineInspection.Infrastructure.Repositories
                 {
                     while (await reader.ReadAsync())
                     {
-                        results.Add(new Result
+                        results.Add(new ResultDto
                         {
-                            id = Convert.ToInt32(reader["id"]),
-                            userId = Convert.ToInt32(reader["userId"]),
+                            resultId = Convert.ToInt32(reader["id"]),
+                            username = reader["username"].ToString(),
                             status = reader["status"].ToString(),
                             date = Convert.ToDateTime(reader["date"]),
                             machineId = reader["machineId"].ToString(),

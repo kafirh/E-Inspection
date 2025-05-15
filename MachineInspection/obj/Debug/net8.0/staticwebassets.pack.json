@@ -13,8 +13,20 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\images\\4RF-PE-MDS-013-8.jpg",
+      "PackagePath": "staticwebassets\\images\\4RF-PE-MDS-013-8.jpg"
+    },
+    {
       "Id": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\images\\4RF-PE-MDS-017-18.jpg",
       "PackagePath": "staticwebassets\\images\\4RF-PE-MDS-017-18.jpg"
+    },
+    {
+      "Id": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\images\\4RF-PE-MDS-017-2.jpg",
+      "PackagePath": "staticwebassets\\images\\4RF-PE-MDS-017-2.jpg"
+    },
+    {
+      "Id": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\images\\4RF-PE-MDS-017-3.jpg",
+      "PackagePath": "staticwebassets\\images\\4RF-PE-MDS-017-3.jpg"
     },
     {
       "Id": "D:\\visual_basic_belajar\\MachineInspection\\MachineInspection\\wwwroot\\js\\site.js",
